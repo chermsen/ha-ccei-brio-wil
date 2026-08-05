@@ -1,0 +1,37 @@
+name: Feature request
+description: Suggest an improvement or a new capability
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the suggestion! Note that some things are limited by the
+        device itself — see the "Known limitations" section in the README
+        (e.g. setting the favorite colour and sequence speed can only be done
+        in the vendor app).
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like to see?
+      description: Describe the feature or improvement.
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why is this useful?
+      description: What problem would it solve for you?
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else?
+      description: >
+        If you've captured any protocol details (e.g. a packet capture of the
+        vendor app doing this), that's extremely helpful — mention it here.
+    validations:
+      required: false
