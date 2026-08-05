@@ -1,0 +1,92 @@
+name: Bug report
+description: Report a problem with the CCEI BRiO WiL integration
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill in as much as
+        you can — it makes it much faster to help you.
+
+  - type: input
+    id: integration_version
+    attributes:
+      label: Integration version
+      description: Which version of this integration are you running? (e.g. 1.0.1)
+      placeholder: "1.0.1"
+    validations:
+      required: true
+
+  - type: input
+    id: ha_version
+    attributes:
+      label: Home Assistant version
+      description: Settings → About (e.g. 2026.3.2)
+      placeholder: "2026.3.2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install_method
+    attributes:
+      label: How did you install it?
+      options:
+        - HACS
+        - Manual copy into custom_components
+    validations:
+      required: true
+
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: What happened?
+      description: Describe the problem and what you expected instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: What did you do right before the problem appeared?
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: reachable
+    attributes:
+      label: Is the controller reachable on the network?
+      description: >
+        From a computer on the same network, does the controller answer on
+        TCP port 30302? (e.g. nmap -p 30302 <controller-ip>)
+      options:
+        - "Yes — port 30302 is open"
+        - "No — port 30302 is closed / no response"
+        - "Not sure / haven't checked"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: >
+        Settings → System → Logs, filtered for "ccei_brio_wil". Paste any
+        related errors here. This will be automatically formatted as code.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: vendor_app
+    attributes:
+      label: What does the vendor app show?
+      description: >
+        If relevant: what state does the official BRiO app report for the
+        light (on/off, colour, brightness) when the problem occurs?
+    validations:
+      required: false
