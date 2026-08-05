@@ -1,0 +1,51 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "CCEI BRiO WiL",
+        "description": "Voer het IP-adres van je BRiO WiL-controller in.",
+        "data": {
+          "host": "IP-adres",
+          "port": "Poort"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbinding mislukt. Controleer het IP-adres en of het apparaat bereikbaar is."
+    },
+    "abort": {
+      "already_configured": "Deze controller is al geconfigureerd."
+    }
+  },
+  "entity": {
+    "light": {
+      "pool_light": {
+        "state_attributes": {
+          "effect": {
+            "state": {
+              "Warm White": "Warmwit",
+              "White": "Wit",
+              "Blue": "Blauw",
+              "Lagoon": "Lagune",
+              "Cyan": "Cyaan",
+              "Purple": "Paars",
+              "Magenta": "Magenta",
+              "Pink": "Roze",
+              "Red": "Rood",
+              "Orange": "Oranje",
+              "Green": "Groen",
+              "Favorite": "Favoriet",
+              "Gradient": "Gradient",
+              "Rainbow": "Rainbow",
+              "Parade": "Parade",
+              "Techno": "Techno",
+              "Horizon": "Horizon",
+              "Hazard": "Hazard",
+              "Magical": "Magical"
+            }
+          }
+        }
+      }
+    }
+  }
+}

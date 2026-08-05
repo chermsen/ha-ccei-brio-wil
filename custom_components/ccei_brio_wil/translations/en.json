@@ -1,0 +1,51 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "CCEI BRiO WiL",
+        "description": "Enter the IP address of your BRiO WiL controller.",
+        "data": {
+          "host": "IP address",
+          "port": "Port"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Connection failed. Check the IP address and that the device is reachable."
+    },
+    "abort": {
+      "already_configured": "This controller is already configured."
+    }
+  },
+  "entity": {
+    "light": {
+      "pool_light": {
+        "state_attributes": {
+          "effect": {
+            "state": {
+              "Warm White": "Warm White",
+              "White": "White",
+              "Blue": "Blue",
+              "Lagoon": "Lagoon",
+              "Cyan": "Cyan",
+              "Purple": "Purple",
+              "Magenta": "Magenta",
+              "Pink": "Pink",
+              "Red": "Red",
+              "Orange": "Orange",
+              "Green": "Green",
+              "Favorite": "Favorite",
+              "Gradient": "Gradient",
+              "Rainbow": "Rainbow",
+              "Parade": "Parade",
+              "Techno": "Techno",
+              "Horizon": "Horizon",
+              "Hazard": "Hazard",
+              "Magical": "Magical"
+            }
+          }
+        }
+      }
+    }
+  }
+}

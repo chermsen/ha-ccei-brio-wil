@@ -1,0 +1,51 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "CCEI BRiO WiL",
+        "description": "Saisissez l'adresse IP de votre contrôleur BRiO WiL.",
+        "data": {
+          "host": "Adresse IP",
+          "port": "Port"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Échec de la connexion. Vérifiez l'adresse IP et que l'appareil est joignable."
+    },
+    "abort": {
+      "already_configured": "Ce contrôleur est déjà configuré."
+    }
+  },
+  "entity": {
+    "light": {
+      "pool_light": {
+        "state_attributes": {
+          "effect": {
+            "state": {
+              "Warm White": "Blanc chaud",
+              "White": "Blanc",
+              "Blue": "Bleu",
+              "Lagoon": "Lagon",
+              "Cyan": "Cyan",
+              "Purple": "Violet",
+              "Magenta": "Magenta",
+              "Pink": "Rose",
+              "Red": "Rouge",
+              "Orange": "Orange",
+              "Green": "Vert",
+              "Favorite": "Favori",
+              "Gradient": "Gradient",
+              "Rainbow": "Rainbow",
+              "Parade": "Parade",
+              "Techno": "Techno",
+              "Horizon": "Horizon",
+              "Hazard": "Hazard",
+              "Magical": "Magical"
+            }
+          }
+        }
+      }
+    }
+  }
+}
