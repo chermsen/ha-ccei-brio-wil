@@ -26,6 +26,10 @@ Colours, the favorite and the sequences are all offered through the light's
 **effect list**, because the device only supports these fixed choices rather
 than free RGB colour.
 
+In automations and scripts the effects use lowercase identifiers, e.g.
+`warm_white`, `blue`, `favorite`, `rainbow`. The names shown in the Home
+Assistant interface are translated.
+
 ---
 
 ## Requirements
