@@ -12,13 +12,13 @@ from homeassistant.components.light import (
     LightEntity,
     LightEntityFeature,
 )
-from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from . import DOMAIN, BrioWilCoordinator
+from . import DOMAIN, BrioWilConfigEntry, BrioWilCoordinator
 from .wil import (
     COLORS,
     EFFECT_LIST,
@@ -30,12 +30,11 @@ from .wil import (
 
 async def async_setup_entry(
     hass: HomeAssistant,
-    entry: ConfigEntry,
+    entry: BrioWilConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up the light from a config entry."""
-    coordinator: BrioWilCoordinator = hass.data[DOMAIN][entry.entry_id]
-    async_add_entities([BrioWilLight(coordinator, entry)])
+    async_add_entities([BrioWilLight(entry.runtime_data, entry)])
 
 
 class BrioWilLight(CoordinatorEntity[BrioWilCoordinator], LightEntity):
@@ -50,7 +49,9 @@ class BrioWilLight(CoordinatorEntity[BrioWilCoordinator], LightEntity):
     _attr_supported_features = LightEntityFeature.EFFECT
     _attr_effect_list = EFFECT_LIST
 
-    def __init__(self, coordinator: BrioWilCoordinator, entry: ConfigEntry) -> None:
+    def __init__(
+        self, coordinator: BrioWilCoordinator, entry: BrioWilConfigEntry
+    ) -> None:
         super().__init__(coordinator)
         self._attr_unique_id = entry.entry_id
         self._attr_device_info = DeviceInfo(
@@ -95,14 +96,18 @@ class BrioWilLight(CoordinatorEntity[BrioWilCoordinator], LightEntity):
                 if current in COLORS:
                     await asyncio.sleep(0.2)
                     await device.async_set_effect(current)
-        except BrioWilError:
-            return
+        except BrioWilError as err:
+            raise HomeAssistantError(
+                f"Could not control the pool light: {err}"
+            ) from err
 
         await self.coordinator.async_request_refresh()
 
     async def async_turn_off(self, **kwargs: Any) -> None:
         try:
             await self.coordinator.device.async_turn_off()
-        except BrioWilError:
-            return
+        except BrioWilError as err:
+            raise HomeAssistantError(
+                f"Could not control the pool light: {err}"
+            ) from err
         await self.coordinator.async_request_refresh()
