@@ -23,25 +23,25 @@
         "state_attributes": {
           "effect": {
             "state": {
-              "Warm White": "Blanco cálido",
-              "White": "Blanco",
-              "Blue": "Azul",
-              "Lagoon": "Laguna",
-              "Cyan": "Cian",
-              "Purple": "Púrpura",
-              "Magenta": "Magenta",
-              "Pink": "Rosa",
-              "Red": "Rojo",
-              "Orange": "Naranja",
-              "Green": "Verde",
-              "Favorite": "Favorito",
-              "Gradient": "Gradient",
-              "Rainbow": "Rainbow",
-              "Parade": "Parade",
-              "Techno": "Techno",
-              "Horizon": "Horizon",
-              "Hazard": "Hazard",
-              "Magical": "Magical"
+              "warm_white": "Blanco cálido",
+              "white": "Blanco",
+              "blue": "Azul",
+              "lagoon": "Laguna",
+              "cyan": "Cian",
+              "purple": "Púrpura",
+              "magenta": "Magenta",
+              "pink": "Rosa",
+              "red": "Rojo",
+              "orange": "Naranja",
+              "green": "Verde",
+              "favorite": "Favorito",
+              "gradient": "Gradient",
+              "rainbow": "Rainbow",
+              "parade": "Parade",
+              "techno": "Techno",
+              "horizon": "Horizon",
+              "hazard": "Hazard",
+              "magical": "Magical"
             }
           }
         }

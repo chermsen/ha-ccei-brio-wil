@@ -44,31 +44,31 @@ _LEVEL_POS = slice(70, 72)  # combined speed(high nibble) + brightness(low nibbl
 # --- Colour / sequence mapping ----------------------------------------------
 # name -> prcn command value == status-frame hex code
 COLORS: dict[str, int] = {
-    "Warm White": 0x00,
-    "White": 0x01,
-    "Blue": 0x02,
-    "Lagoon": 0x03,
-    "Cyan": 0x04,
-    "Purple": 0x05,
-    "Magenta": 0x06,
-    "Pink": 0x07,
-    "Red": 0x08,
-    "Orange": 0x09,
-    "Green": 0x0A,
+    "warm_white": 0x00,
+    "white": 0x01,
+    "blue": 0x02,
+    "lagoon": 0x03,
+    "cyan": 0x04,
+    "purple": 0x05,
+    "magenta": 0x06,
+    "pink": 0x07,
+    "red": 0x08,
+    "orange": 0x09,
+    "green": 0x0A,
 }
 SEQUENCES: dict[str, int] = {
-    "Gradient": 0x10,
-    "Rainbow": 0x11,
-    "Parade": 0x12,
-    "Techno": 0x13,
-    "Horizon": 0x14,
-    "Hazard": 0x15,
-    "Magical": 0x16,
+    "gradient": 0x10,
+    "rainbow": 0x11,
+    "parade": 0x12,
+    "techno": 0x13,
+    "horizon": 0x14,
+    "hazard": 0x15,
+    "magical": 0x16,
 }
 
 # "Favorite" (code 0x0B) is a device-side stored scene: it can be *recalled*
 # via {"prcn":11} but can only be *defined* from the vendor app.
-FAVORITE_NAME = "Favorite"
+FAVORITE_NAME = "favorite"
 FAVORITE_CODE = 0x0B
 
 # Everything selectable is exposed via the effect list: solid colours first,
