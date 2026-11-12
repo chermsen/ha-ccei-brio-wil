@@ -24,13 +24,19 @@ SCAN_INTERVAL = timedelta(seconds=30)
 _MAX_CONSECUTIVE_FAILURES = 3
 
 
+type BrioWilConfigEntry = ConfigEntry[BrioWilCoordinator]
+
+
 class BrioWilCoordinator(DataUpdateCoordinator[BrioWilStatus]):
     """Polls the controller for its full state."""
 
-    def __init__(self, hass: HomeAssistant, device: BrioWil) -> None:
+    def __init__(
+        self, hass: HomeAssistant, entry: BrioWilConfigEntry, device: BrioWil
+    ) -> None:
         super().__init__(
             hass,
             _LOGGER,
+            config_entry=entry,
             name=DOMAIN,
             update_interval=SCAN_INTERVAL,
         )
@@ -59,23 +65,20 @@ class BrioWilCoordinator(DataUpdateCoordinator[BrioWilStatus]):
             return status
 
 
-async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+async def async_setup_entry(hass: HomeAssistant, entry: BrioWilConfigEntry) -> bool:
     """Set up from a config entry."""
     device = BrioWil(
         entry.data[CONF_HOST],
         entry.data.get(CONF_PORT, DEFAULT_PORT),
     )
-    coordinator = BrioWilCoordinator(hass, device)
+    coordinator = BrioWilCoordinator(hass, entry, device)
     await coordinator.async_config_entry_first_refresh()
 
-    hass.data.setdefault(DOMAIN, {})[entry.entry_id] = coordinator
+    entry.runtime_data = coordinator
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
 
 
-async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+async def async_unload_entry(hass: HomeAssistant, entry: BrioWilConfigEntry) -> bool:
     """Unload a config entry."""
-    unload_ok = await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
-    if unload_ok:
-        hass.data[DOMAIN].pop(entry.entry_id)
-    return unload_ok
+    return await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
